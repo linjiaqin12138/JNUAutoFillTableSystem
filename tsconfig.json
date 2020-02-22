@@ -1,0 +1,15 @@
+{
+    "include": [
+      "src/**/*",
+    ],
+    "files": [
+      "main.ts",
+    ],
+    "compilerOptions": {
+      "lib": [ "es2015" ,"dom"],
+      "removeComments": true,
+      "sourceMap": true,
+      "outDir": "./built/",
+      "allowJs": true
+    }
+  }

@@ -1,0 +1,6 @@
+.ipynb_checkpoints/
+built/
+.vscode/
+node_modules/
+*.ipynb
+yarn.lock

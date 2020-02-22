@@ -1,0 +1,58 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title 信息查看
+    link(rel='stylesheet', href='/static/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/static/stylesheets/jnu.css')
+  body
+    script(src='https://libs.cdnjs.net/jquery/2.1.4/jquery.js')
+    script(src='/static/javascript/bootstrap.min.js')
+    .container
+      .row
+        .col-md-2
+        #title.col-md-8.page-header
+          h1 信息查看
+        .col-md-2
+      .row
+        .col-md-2
+        .col-md-8
+          #infotable.row
+            table.table.table-bordered
+              tbody(style='text-align: center;')
+                tr
+                  th(scope='row') 学号
+                  td=stuNum
+                tr
+                  th(scope='row') 邮箱
+                  td=email
+                tr
+                //-   th(scope='row') 班级
+                //-   td=class_
+                //- tr
+                //-   th(scope='row') 辅导员
+                //-   td=teacher
+                //- tr
+                //-   th(scope='row') 紧急联系人
+                //-   td=contactName
+                //- tr
+                //-   th(scope='row') 紧急联系人电话
+                //-   td=contactPhone
+                //- tr
+                //-   th(scope='row') 省份
+                //-   td=province
+                //- tr
+                //-   th(scope='row') 城市
+                //-   td=city
+                //- tr
+                //-   th(scope='row') 区县
+                //-   td=area
+                //- tr
+                //-   th(scope='row') 具体地址
+                //-   td=road
+        .col-md-2
+      .row
+        div(style='text-align: center;')
+          a(href='/newregister?clear=true')
+            button.btn.btn-info(type='button') 修改

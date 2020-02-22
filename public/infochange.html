@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息填写</title>
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/stylesheets/jnu.css">
+</head>
+<body>
+    <script src="https://libs.cdnjs.net/jquery/2.1.4/jquery.js"></script> 
+    <script src="/static/javascript/bootstrap.min.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 page-header" id="title">
+                <h1>信息填写</h1>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form action="/info/infochange" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">辅导员姓名</span>
+                        <input type="text" name="teacher" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">所在班级/专业</span>
+                        <input type="text" name="class" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">紧急联系人</span>
+                        <input type="text" name="ergenContact" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">紧急联系人手机号</span>
+                        <input type="text" name="ergenPhone" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">省份</span>
+                        <input type="text" name="province" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">城市</span>
+                        <input type="text" name="city" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">区县</span>
+                        <input type="text" name="area" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">具体住址</span>
+                        <input type="text" name="road" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="fill-bar"></div>
+                    <div class="btn-group" id="postInfo"> 
+                        <button type="submit" >提交</button>
+                    </div>
+                </form>   
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row default">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <ul class="list-group">
+                    <li class="list-group-item">身体状况：正常</li>
+                    <li class="list-group-item">所在地：在家</li>
+                    <li class="list-group-item">家人是否存在确诊/疑似:否</li>
+                    <li class="list-group-item">14天内...：否</li>
+                    <li class="list-group-item">途径武汉：否</li>
+                    <li class="list-group-item">承诺真实可靠</li>
+                    <li class="list-group-item"><strong>每天早上6点开始填表</strong></li>
+                </ul>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 page-header"></div>
+            <div class="col-md-1"></div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+#title {
+    text-align: center;
+}
+.fill-bar {
+    margin-top: 10px;
+}
+#post-info{
+    text-align: right;
+}
+.default {
+    margin-top: 20px;
+}
+
+#infotable{
+    margin-right: 50px;
+    margin-left: 50px;
+}

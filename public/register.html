@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暨南大学填表抗疫</title>
+    <link rel="stylesheet" href="/static/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/stylesheets/jnu.css">
+</head>
+
+<body>
+    <script src="https://libs.cdnjs.net/jquery/2.1.4/jquery.js"></script> 
+    <script src="/static/javascript/bootstrap.min.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 page-header" id="title">
+                <h1>暨南大学填表抗疫自动程序</h1>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form action="/newregister" method="post" onsubmit="return checkBeforeSubmit()">
+                    <div class="alert alert-success" role="alert">为了登录数字暨大，请输入校园网账号密码</div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">学号</span>
+                        <input type="text" name="stuNum" id="stuNum" class="form-control" placeholder="在此输入学号" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="fill-bar"></div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">密码</span>
+                        <input type="password" name="passkey" id="passkey" class="form-control" placeholder="校园网密码" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="row fill-bar"></div>
+                    <div class="row fill-bar"></div>
+                    <div class="alert alert-success" role="alert">提供您的邮箱，每天的登录结果将通知您</div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">邮箱</span>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="在此输入邮箱" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="row fill-bar"></div>
+                    <div class="row fill-bar"></div>
+                    <div class="btn-group" id="postInfo"> 
+                        <button type="submit" >提交</button>
+                    </div>
+                </form>   
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 page-header"></div>
+            <div class="col-md-2"></div>
+        </div>
+    </footer>
+    <script>
+        function checkEmail(email){
+            var re = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if(!email.match(re)){
+                // alert("请输入正确邮箱格式");
+                return false;
+            }
+            return true;
+        }
+        function checkPassword(password) {
+            if(password.length == 0) {
+                return false;
+            }
+            return true;
+        }
+        function checkBeforeSubmit() {
+            var userEmail = $("#email").val();
+            var userPassword = $("#passkey").val();
+            var stuNum = $("#stuNum").val();
+            if(!checkEmail(userEmail)) {alert("输入正确邮箱"); return false;}
+            if(!checkPassword(userPassword)) {alert("请输入密码"); return false;}
+            if(stuNum.length == 0) {alert("输入学号"); return false;}
+            return true;
+        }
+    </script>
+</body>
+</html>
