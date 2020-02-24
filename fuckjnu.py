@@ -41,12 +41,14 @@ class TableRobot:
         cursor = self.db.cursor()
         counts = cursor.execute("select * from LoginData")
         userAccount = cursor.fetchall()
+        cursor.close()
         result = []
         for user in userAccount:
             cursorForInfo = self.db.cursor()
             if(cursorForInfo.execute("select * from UserInfo where user=\'" + user[0]+"\'") > 1):
                 raise Exception("Error: no less than one user info")
             userinfo = cursorForInfo.fetchone()
+            cursorForInfo.close()
             oneuser = {
                 'user': user[0],
                 'password': user[1],
