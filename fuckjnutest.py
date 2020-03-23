@@ -16,7 +16,7 @@ class TableRobot:
     BASEURL = "https://stuhealth.jnu.edu.cn"
     ctx = None
     db = pymysql.connect("aliyun.linjiaqin.xyz","root","toor","JNUSTU")
-
+    
     def __init__(self):
         js = open("crypto.js","r")
         self.ctx = execjs.compile(js.read())
@@ -25,7 +25,10 @@ class TableRobot:
         sender = 'jiaqinlin12138@163.com'
         receiver = user['email']
         title = "今日填表结果"
-        message = "今天的填表已经完成，请查收" + user['link']
+        message = "今天的填表已经完成，请查收\n" 
+                + user['link']
+                + "\n如果需要取消自动打卡，可以回复本邮件\n"
+                + "如果城市变更等情况想要修改打卡信息，可以在凌晨6点前手动打卡，今后的打卡会自动按更新的信息进行填写"
         pw = "linjiaqin12306"
         smtp = SMTP_SSL('smtp.163.com',465)
         smtp.login(sender,pw)
