@@ -64,6 +64,7 @@ class TableRobot:
             configFile = open(configPath, 'r')
             self.config = json.loads(configFile.read())
             self.ctx = execjs.compile(encryptScript.read())
+            print(self.config['database'])
             self.db = pymysql.connect(
                 self.config['database']['host'],
                 self.config['database']['user'],

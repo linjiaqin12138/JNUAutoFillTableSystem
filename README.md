@@ -52,7 +52,7 @@
 }
 ```
 ### 运行项目
-找一台24小时运行的机子做服务器，安装好docker，到项目路径下执行`docker-compose up -d`即可运行
+找一台24小时运行的机子做服务器，安装好docker，到项目路径下执行`docker network create docker_net && docker-compose up -d`即可运行
 
 24h运行的机子可选项：
 1. 树莓派
@@ -69,7 +69,7 @@
 在项目的根目录运行
 `docker build -t jnu-python-node .`
 
-然后在`docker-compose.yml`中将service.app.image的值替换为`jnu-python-node`，然后保存运行`docker-compose up -d`即可
+然后在`docker-compose.yml`中将`service.app.image`的值替换为`jnu-python-node`，然后保存运行`docker network create docker_net && docker-compose up -d`即可
 
 ## 求打赏
 ![打赏一块钱](https://img-blog.csdnimg.cn/20191208225402871.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTcyODE5OA==,size_16,color_FFFFFF,t_70)

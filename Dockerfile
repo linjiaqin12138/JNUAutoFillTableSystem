@@ -7,5 +7,5 @@ index-url=http://mirrors.aliyun.com/pypi/simple" > /etc/pip.conf && \
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone
 RUN echo "# min   hour    day     month   weekday command \n\
-*      *      *      *       *       /usr/local/bin/python /app/scripts/script.py >> /var/log/jnuHealthCheck/script.log \n" > /var/spool/cron/crontabs/root
+*      6      *      *       *       /usr/local/bin/python /app/scripts/script.py >> /var/log/jnuHealthCheck/script.log \n" > /var/spool/cron/crontabs/root
 RUN pip install -r requirements.txt
