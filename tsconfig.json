@@ -1,15 +1,19 @@
 {
     "include": [
       "src/**/*",
+      "test/**/*"
     ],
     "files": [
       "main.ts",
     ],
     "compilerOptions": {
-      "lib": [ "es2015" ,"dom"],
+      "module": "commonjs",
+      "lib": [ "es2015" ],
       "removeComments": true,
       "sourceMap": true,
       "outDir": "./built/",
-      "allowJs": true
+      "allowJs": true,
+      "target": "ES2015",
+      "moduleResolution": "node"
     }
   }

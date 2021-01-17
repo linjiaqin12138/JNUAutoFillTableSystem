@@ -1,48 +1,27 @@
-export function addDoubleQuotesForValue(value:string){
-    return "\"" + value + "\"";
+import * as log from 'logger';
+import * as path from 'path';
+import * as crypto from 'crypto-js'
+import { config } from '../config';
+const logPath = process.env.ENV === 'production' ? '/var/log/jnuHealthCheck/web.log' : path.join(process.cwd(), './log/web.log');
+export const logger = log.createLogger(logPath);
+logger.setLevel('debug');
+const secret = config.get('web.encrypt-key');
+
+export function encryptPassWord(pass: string): string {
+    return crypto.AES.encrypt(pass, secret).toString();
 }
-export function buildUpdateQuery(table:string, columns: string[], values: string[], conditions: string){
-    // assert columns.length == values.length
-    let result = "update " + table + " set ";
-    columns.forEach((col,index,arr)=>{
-        arr[index] = col + "=" + addDoubleQuotesForValue(values[index]);
-    });
-    result+=columns.join(',');
-    result+=" ";
-    result+=conditions;
-    return result;
+
+export function decryptPassWord(encrypted: string): string {
+    return crypto.AES.decrypt(encrypted, secret).toString(crypto.enc.Utf8);
 }
-export function buildSelectQuery(table:string, columns: string[],conditions: string):string{
-    let result = "select "
-    if(columns.length == 0){
-        result+="*";
-    }else{
-        result += columns.join(",");
+
+export async function comparePassword(pass: string, encrypted: string): Promise<boolean> {
+    logger.debug('pass: ', pass, 'encrypted: ', encrypted);
+    const decrypted = decryptPassWord(encrypted);
+    const isEqual = decrypted === pass ;
+    if (isEqual) {
+        return true;
     }
-    result+=" from ";
-    result+=table;
-    result+=" ";
-    result+= conditions;
-    return result;
-}
-export function buildInsertQuery(table:string, columns: string[] ,values: string[]){
-    let result = "insert into " + table + " (";
-    for(let i = 0;i < columns.length-1;i++){
-        result+=columns[i]
-        result+=","
-    }
-    result+=columns[columns.length-1];
-    result+=") ";
-    result+="values ("
-    for(let i=0; i < columns.length-1;i++){
-        result+="\"";
-        result+=values[i];
-        result+="\"";
-        result+=","
-    }
-    result+="\"";
-    result+=values[columns.length-1];
-    result+="\"";
-    result+=")";
-    return result;
+    logger.debug('password have been changed!, before: ', decrypted, 'after: ', pass);
+    return false;
 }

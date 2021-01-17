@@ -1,0 +1,23 @@
+{
+    "scripts": {
+        "notification": {
+            "enabled": false,
+            "email-address": "example@163.com",
+            "passport": "example",
+            "title": "health check failed notification",
+            "host": "smtp.163.com",
+            "port": 465
+        }
+    },
+    "database": {
+        "host": "mysql",
+        "port": "3306",
+        "db-name": "JNUSTU",
+        "user": "root",
+        "password": "secret"
+    },
+    "web": {
+        "port": 3000,
+        "encrypt-key": "jnu"
+    }
+}

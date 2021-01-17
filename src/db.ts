@@ -1,50 +1,50 @@
 import * as mysql from 'mysql';
-class MysqlConnection {
-    
-    constructor(public connection: mysql.PoolConnection){
+import { config } from './config';
+import { logger } from './utils';
 
-    }
+interface LoginData {
+    user: string,
+    password: string,
+    email: string
+}
+const dbConfig = {
+    host: config.get('database.host') || 'mysql',
+    user: config.get('database.user'),
+    password: config.get('database.password'),
+    database: config.get('database.db-name')
+}
+const connection = mysql.createConnection(dbConfig);
 
-    public async query(sql: string):Promise<any> {
-        return new Promise((resolve,reject)=>{
-            this.connection.query(sql,(err,result)=>{
-                if(err) reject(err);
-                else resolve(result)
-            });
-        }) 
-    }
+connection.connect((err: any, result: any)=>{
+    logger.debug(JSON.stringify(dbConfig));
+    if(err) logger.debug(`Fail to connect database`);
+    else logger.debug(JSON.stringify(result));
+});
+
+async function querySync(sql: string): Promise<any[]>{
+    return new Promise<Array<any>>((resolve, reject) => {
+        connection.query(sql, (err: any, result: any)=>{
+            if(err) reject(err);
+            else{
+                resolve(result);
+            }
+        })
+    });
 }
-class MysqlDatabase {
-    pool: mysql.Pool;
-    constructor(option: mysql.PoolConfig) {
-        console.log("DataBase Created!");
-        this.pool = mysql.createPool(option);
-    }
-    public async getConnection(): Promise<MysqlConnection>{
-        return new Promise((resolve,reject)=>{
-            this.pool.getConnection((err,connection)=>{
-                if(err) reject(err);
-                else resolve(new MysqlConnection(connection));
-            });
-        }); 
-    }
-    public async queryOnce(sql: string){
-        const conn = await this.getConnection();
-        const result = conn.query(sql);
-        conn.connection.release();
-        return result;
-    }   
-    
-};
-const option:mysql.PoolConfig = {
-    host: "***",
-    user: "***",
-    password: "***",
-    database: "***"
+
+async function createTable(): Promise<void> {
+    logger.debug('create table.......');
+    await querySync('CREATE TABLE IF NOT EXISTS `LoginData` (\n' +
+        'user CHAR(10) PRIMARY KEY, \n' +
+        'password VARCHAR(100) NOT NULL, \n' +
+        'email VARCHAR(20) NOT NULL \n' +
+    ') ENGINE=InnoDB DEFAULT CHARSET=utf8')
 }
-option["database"] = process.env.NODE_ENV == "test"? "TestJNUSTU" : "JNUSTU"
-const db = new MysqlDatabase(option);
+
+createTable();
 
 export {
-    db
+    querySync,
+    LoginData,
+    connection
 }

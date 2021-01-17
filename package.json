@@ -9,20 +9,32 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "jade": "^1.11.0",
+    "logger": "^0.0.1",
     "mysql": "^2.18.1",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "request-promise-native": "^1.0.8"
   },
   "scripts": {
-    "start": "node ./built/main.js",
-    "build": "rm -rf ./built/ && tsc"
+    "start": "ENV=production node ./built/main.js",
+    "build": "rm -rf ./built/ && tsc",
+    "test": "mocha --exit built/test/*.js"
   },
   "devDependencies": {
-    "@types/request": "^2.48.4",
-    "@types/request-promise-native": "^1.0.17",
+    "@types/bcrypt": "^3.0.0",
+    "@types/chai": "^4.2.14",
     "@types/cookie-parser": "^1.4.2",
+    "@types/crypto-js": "^4.0.1",
     "@types/express": "^4.17.2",
     "@types/express-session": "^1.15.16",
-    "@types/mysql": "^2.15.8"
+    "@types/lodash": "^4.14.167",
+    "@types/logger": "^0.0.0",
+    "@types/mocha": "^8.2.0",
+    "@types/mysql": "^2.15.8",
+    "@types/request-promise-native": "^1.0.17",
+    "@types/supertest": "^2.0.10",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "supertest": "^6.1.1",
+    "typescript": "^3.7.5"
   }
 }
