@@ -6,9 +6,9 @@ import { querySync } from '../src/db';
 import { decryptPassWord, logger } from '../src/utils'
 
 const userData: StuInfo = {
-    user: '2016051126',
-    password: 'xcdl123..',
-    email: '1243288856@qq.com'
+    user: 'fake-user',
+    password: 'fake-password',
+    email: 'fake@qq.com'
 }
 
 function parseCookie(strWithCookie: string): string {
