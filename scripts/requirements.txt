@@ -1,4 +1,4 @@
 PyEmail==0.0.1
 pymysql==0.10.1
 PyExecJS==1.5.1
-requests==2.24.0
+requests==2.31.0
